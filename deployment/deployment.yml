@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pneumonia-deployment
+  labels:
+    app: pneumonia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pneumonia
+  template:
+    metadata:
+      labels:
+        app: pneumonia
+    spec:
+      containers:
+      - name: pneumonia
+        image: pneumonia:tf
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
